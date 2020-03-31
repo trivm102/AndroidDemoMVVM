@@ -1,0 +1,4 @@
+rootProject.name='MyJobApplication'
+include ':Main'
+include ':keys'
+include ':splashscreen'
