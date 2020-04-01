@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.example.splashscreen.viewmodel.SplashScreenViewModel" />
+    </data>
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.MainActivity"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/repository_name"
+            android:text="@{viewModel.text}" />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"/>
+        <Button
+            android:text="Refresh"
+            android:id="@+id/refresh_button"
+            android:onClick="@{() -> viewModel.verifyToken()}"
+            android:clickable="@{viewModel.isLoading ? false : true}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>
